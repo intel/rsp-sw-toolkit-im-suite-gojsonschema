@@ -28,6 +28,7 @@ package gojsonschema
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"math"
 	"math/big"
 	"reflect"
@@ -159,10 +160,8 @@ func mustBeInteger(what interface{}) *int {
 			int32Value := int(int64Value)
 			return &int32Value
 
-		} else {
-			return nil
 		}
-
+		return nil
 	}
 
 	return nil
@@ -178,7 +177,7 @@ func mustBeNumber(what interface{}) *big.Rat {
 		} else {
 			return nil
 		}
-
+		return nil
 	}
 
 	return nil
@@ -192,7 +191,10 @@ func resultErrorFormatJsonNumber(n json.Number) string {
 		return fmt.Sprintf("%d", int64Value)
 	}
 
-	float64Value, _ := n.Float64()
+	float64Value, errFloat64 := n.Float64()
+	if errFloat64 != nil {
+		log.Println(errFloat64)
+	}
 
 	return fmt.Sprintf("%g", float64Value)
 }

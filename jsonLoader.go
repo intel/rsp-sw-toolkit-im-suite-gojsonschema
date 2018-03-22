@@ -32,13 +32,14 @@ import (
 	"errors"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 	"path/filepath"
 	"runtime"
 	"strings"
 
-	"github.com/xeipuuv/gojsonreference"
+	"github.impcloud.net/Responsive-Retail-Core/gojsonreference"
 )
 
 var osFS = osFileSystem(os.Open)
@@ -142,8 +143,7 @@ func (l *jsonReferenceLoader) LoadJSON() (interface{}, error) {
 		if runtime.GOOS == "windows" {
 			// on Windows, a file URL may have an extra leading slash, use slashes
 			// instead of backslashes, and have spaces escaped
-			filename = strings.TrimPrefix(filename, "/")
-			filename = filepath.FromSlash(filename)
+			filename = filepath.FromSlash(strings.TrimPrefix(filename, "/"))
 		}
 
 		document, err = l.loadFromFile(filename)
@@ -195,7 +195,11 @@ func (l *jsonReferenceLoader) loadFromFile(path string) (interface{}, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer f.Close()
+	defer func() {
+		if closeErr := f.Close(); closeErr != nil {
+			log.Println(closeErr)
+		}
+	}()
 
 	bodyBuff, err := ioutil.ReadAll(f)
 	if err != nil {

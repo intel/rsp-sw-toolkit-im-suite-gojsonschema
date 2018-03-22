@@ -20,8 +20,8 @@ go get github.com/xeipuuv/gojsonschema
 ```
 
 Dependencies :
-* [github.com/xeipuuv/gojsonpointer](https://github.com/xeipuuv/gojsonpointer)
-* [github.com/xeipuuv/gojsonreference](https://github.com/xeipuuv/gojsonreference)
+* [github.impcloud.net/Responsive-Retail-Core/gojsonpointer](https://github.impcloud.net/Responsive-Retail-Core/gojsonpointer)
+* [github.impcloud.net/Responsive-Retail-Core/gojsonreference](https://github.impcloud.net/Responsive-Retail-Core/gojsonreference)
 * [github.com/stretchr/testify/assert](https://github.com/stretchr/testify#assert-package)
 
 ## Usage

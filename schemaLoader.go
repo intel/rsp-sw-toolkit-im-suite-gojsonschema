@@ -18,7 +18,7 @@ import (
 	"bytes"
 	"errors"
 
-	"github.com/xeipuuv/gojsonreference"
+	"github.impcloud.net/Responsive-Retail-Core/gojsonreference"
 )
 
 type SchemaLoader struct {

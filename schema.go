@@ -28,12 +28,13 @@ package gojsonschema
 
 import (
 	"errors"
+	"log"
 	"math/big"
 	"reflect"
 	"regexp"
 	"text/template"
 
-	"github.com/xeipuuv/gojsonreference"
+	"github.impcloud.net/Responsive-Retail-Core/gojsonreference"
 )
 
 var (
@@ -45,10 +46,12 @@ var (
 	ErrorTemplateFuncs template.FuncMap
 )
 
+// NewSchema creates a new instance of Schema
 func NewSchema(l JSONLoader) (*Schema, error) {
 	return NewSchemaLoader().Compile(l)
 }
 
+// Schema gives the JSON shcema meta data and structure
 type Schema struct {
 	documentReference gojsonreference.JsonReference
 	rootSchema        *subSchema
@@ -61,6 +64,7 @@ func (d *Schema) parse(document interface{}, draft Draft) error {
 	return d.parseSchema(document, d.rootSchema)
 }
 
+// SetRootSchemaName sets the root schema to input `name`
 func (d *Schema) SetRootSchemaName(name string) {
 	d.rootSchema.property = name
 }
@@ -267,9 +271,11 @@ func (d *Schema) parseSchema(documentNode interface{}, currentSchema *subSchema)
 								"given":    KEY_TYPE,
 							},
 						))
-					} else {
-						currentSchema.types.Add(typeInArray.(string))
 					}
+					if addErr := currentSchema.types.Add(typeInArray.(string)); addErr != nil {
+						log.Println("schema adding error for typeInArray")
+					}
+
 				}
 
 			} else {
@@ -1042,9 +1048,8 @@ func (d *Schema) parseDependencies(documentNode interface{}, currentSchema *subS
 							"type": STRING_SCHEMA_OR_ARRAY_OF_STRINGS,
 						},
 					))
-				} else {
-					valuesToRegister = append(valuesToRegister, value.(string))
 				}
+				valuesToRegister = append(valuesToRegister, value.(string))
 				currentSchema.dependencies[k] = valuesToRegister
 			}
 

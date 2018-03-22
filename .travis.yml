@@ -7,6 +7,6 @@ go:
   - "1.9"
   - "1.10"
 before_install:
-  - go get github.com/xeipuuv/gojsonreference
-  - go get github.com/xeipuuv/gojsonpointer
+  - go get github.impcloud.net/Responsive-Retail-Core/gojsonreference
+  - go get github.impcloud.net/Responsive-Retail-Core/gojsonpointer
   - go get github.com/stretchr/testify/assert
