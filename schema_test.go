@@ -37,8 +37,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-const displayErrorMessages = false
-
 const circularReference = `{
 	"type": "object",
 	"properties": {

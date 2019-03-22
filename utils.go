@@ -177,7 +177,6 @@ func mustBeNumber(what interface{}) *big.Rat {
 		} else {
 			return nil
 		}
-		return nil
 	}
 
 	return nil

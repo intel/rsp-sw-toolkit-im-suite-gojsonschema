@@ -181,6 +181,7 @@ func newError(err ResultError, context *JsonContext, value interface{}, locale l
 		t = "required"
 		d = locale.Required()
 	case *InvalidTypeError:
+		//nolint
 		t = "invalid_type"
 		d = locale.InvalidType()
 	case *NumberAnyOfError:
