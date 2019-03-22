@@ -3,9 +3,9 @@ license: Apache 2.0
 import:
 - package: github.com/xeipuuv/gojsonschema
 
-- package: github.impcloud.net/Responsive-Retail-Core/gojsonpointer
+- package: github.impcloud.net/RSP-Inventory-Suite/gojsonpointer
 
-- package: github.impcloud.net/Responsive-Retail-Core/gojsonreference
+- package: github.impcloud.net/RSP-Inventory-Suite/gojsonreference
 
 testImport:
 - package: github.com/stretchr/testify

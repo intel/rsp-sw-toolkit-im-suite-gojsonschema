@@ -32,7 +32,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.impcloud.net/Responsive-Retail-Core/gojsonreference"
+	"github.impcloud.net/RSP-Inventory-Suite/gojsonreference"
 )
 
 const (

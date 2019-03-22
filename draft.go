@@ -19,7 +19,7 @@ import (
 	"math"
 	"reflect"
 
-	"github.impcloud.net/Responsive-Retail-Core/gojsonreference"
+	"github.impcloud.net/RSP-Inventory-Suite/gojsonreference"
 )
 
 type Draft int

@@ -31,7 +31,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.impcloud.net/Responsive-Retail-Core/gojsonreference"
+	"github.impcloud.net/RSP-Inventory-Suite/gojsonreference"
 )
 
 type schemaPoolDocument struct {

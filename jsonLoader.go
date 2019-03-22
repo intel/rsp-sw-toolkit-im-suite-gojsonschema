@@ -39,7 +39,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.impcloud.net/Responsive-Retail-Core/gojsonreference"
+	"github.impcloud.net/RSP-Inventory-Suite/gojsonreference"
 )
 
 var osFS = osFileSystem(os.Open)
