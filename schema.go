@@ -240,7 +240,7 @@ func (d *Schema) parseSchema(documentNode interface{}, currentSchema *subSchema)
 		if sch, ok := d.referencePool.Get(currentSchema.ref.String()); ok {
 			currentSchema.refSchema = sch
 		} else {
-			err := d.parseReference(documentNode, currentSchema)
+			err := d.parseReference(currentSchema)
 
 			if err != nil {
 				return err
@@ -955,7 +955,7 @@ func (d *Schema) parseSchema(documentNode interface{}, currentSchema *subSchema)
 	return nil
 }
 
-func (d *Schema) parseReference(documentNode interface{}, currentSchema *subSchema) error {
+func (d *Schema) parseReference(currentSchema *subSchema) error {
 	var (
 		refdDocumentNode interface{}
 		dsp              *schemaPoolDocument
