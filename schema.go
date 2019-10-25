@@ -970,14 +970,10 @@ func (d *Schema) parseReference(currentSchema *subSchema) error {
 	if err != nil {
 		return err
 	}
-	newSchema.id = currentSchema.ref
 
+	newSchema.id = currentSchema.ref
 	refdDocumentNode = dsp.Document
 	newSchema.draft = dsp.Draft
-
-	if err != nil {
-		return err
-	}
 
 	if !isKind(refdDocumentNode, reflect.Map, reflect.Bool) {
 		return errors.New(formatErrorDescription(

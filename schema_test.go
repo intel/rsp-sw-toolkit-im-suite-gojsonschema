@@ -27,7 +27,6 @@ package gojsonschema
 
 import (
 	"bytes"
-	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
@@ -220,17 +219,14 @@ func TestRefProperty(t *testing.T) {
 	// call the target function
 	s, err := NewSchema(schemaLoader)
 	if err != nil {
-		t.Errorf("Got error: %s", err.Error())
+		t.Fatalf("Got error: %s", err.Error())
 	}
 	result, err := s.Validate(documentLoader)
 	if err != nil {
-		t.Errorf("Got error: %s", err.Error())
+		t.Fatalf("Got error: %s", err.Error())
 	}
 	if !result.Valid() {
-		for _, err := range result.Errors() {
-			fmt.Println(err.String())
-		}
-		t.Errorf("Got invalid validation result.")
+		t.Errorf("Got invalid validation results: %s", result.Errors())
 	}
 }
 
@@ -247,7 +243,7 @@ func TestFragmentLoader(t *testing.T) {
 	schema, err := NewSchema(schemaLoader)
 
 	if err != nil {
-		t.Errorf("Encountered error while loading schema: %s", err.Error())
+		t.Fatalf("Encountered error while loading schema: %s", err.Error())
 	}
 
 	validDocument := NewStringLoader(`5`)
@@ -302,12 +298,15 @@ func TestLocationIndependentIdentifier(t *testing.T) {
 
 	s, err := NewSchema(schemaLoader)
 	if err != nil {
-		t.Errorf("Got error: %s", err.Error())
+		t.Fatalf("Got error: %s", err.Error())
 	}
 
 	result, err := s.Validate(documentLoader)
 	if err != nil {
-		t.Errorf("Got error: %s", err.Error())
+		t.Fatalf("Got error: %s", err.Error())
+	}
+	if result == nil {
+		t.Fatalf("Result is nil.")
 	}
 
 	if len(result.Errors()) != 2 || result.Errors()[0].Type() != "number_not" || result.Errors()[1].Type() != "number_all_of" {
@@ -325,5 +324,8 @@ func TestIncorrectRef(t *testing.T) {
 	s, err := NewSchema(schemaLoader)
 
 	assert.Nil(t, s)
+	if err == nil {
+		t.Fatalf("Error is nil")
+	}
 	assert.Equal(t, "Object has no key 'fail'", err.Error())
 }

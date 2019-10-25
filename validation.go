@@ -411,7 +411,7 @@ func (v *subSchema) validateCommon(currentSubSchema *subSchema, value interface{
 		if err != nil {
 			result.addInternalError(new(InternalError), context, value, ErrorDetails{"error": err})
 		}
-		if *vString != *currentSubSchema._const {
+		if vString != nil && *vString != *currentSubSchema._const {
 			result.addInternalError(new(ConstError),
 				context,
 				value,
@@ -521,6 +521,9 @@ func (v *subSchema) validateArray(currentSubSchema *subSchema, value []interface
 			vString, err := marshalWithoutNumber(v)
 			if err != nil {
 				result.addInternalError(new(InternalError), context, value, ErrorDetails{"err": err})
+			}
+			if vString == nil {
+				continue
 			}
 			if i := indexStringInSlice(stringifiedItems, *vString); i > -1 {
 				result.addInternalError(

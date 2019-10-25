@@ -41,7 +41,7 @@ type jsonSchemaTestCase struct {
 	Valid       bool        `json:"valid"`
 }
 
-//Skip any directories not named appropiately
+// Skip any directories not named appropiately
 // filepath.Walk will also visit files in the root of the test directory
 var testDirectories = regexp.MustCompile(`(draft\d+)`)
 var draftMapping = map[string]Draft{
@@ -53,7 +53,7 @@ var draftMapping = map[string]Draft{
 func executeTests(t *testing.T, path string) error {
 	file, err := os.Open(path)
 	if err != nil {
-		t.Errorf("Error (%s)\n", err.Error())
+		t.Fatalf("Error (%s)\n", err.Error())
 	}
 	fmt.Println(file.Name())
 
@@ -63,7 +63,7 @@ func executeTests(t *testing.T, path string) error {
 	err = d.Decode(&tests)
 
 	if err != nil {
-		t.Errorf("Error (%s)\n", err.Error())
+		t.Fatalf("Error (%s)\n", err.Error())
 	}
 
 	draft := Hybrid
@@ -85,7 +85,7 @@ func executeTests(t *testing.T, path string) error {
 		testSchema, err := sl.Compile(testSchemaLoader)
 
 		if err != nil {
-			t.Errorf("Error (%s)\n", err.Error())
+			t.Fatalf("Error (%s)\n", err.Error())
 		}
 
 		for _, testCase := range test.Tests {
@@ -93,7 +93,7 @@ func executeTests(t *testing.T, path string) error {
 			result, err := testSchema.Validate(testDataLoader)
 
 			if err != nil {
-				t.Errorf("Error (%s)\n", err.Error())
+				t.Fatalf("Error (%s)\n", err.Error())
 			}
 
 			if result.Valid() != testCase.Valid {
@@ -120,6 +120,7 @@ func executeTests(t *testing.T, path string) error {
 }
 
 func TestSuite(t *testing.T) {
+	t.Helper()
 
 	wd, err := os.Getwd()
 	if err != nil {
@@ -129,9 +130,8 @@ func TestSuite(t *testing.T) {
 
 	go func() {
 		err := http.ListenAndServe(":1234", http.FileServer(http.Dir(filepath.Join(wd, "remotes"))))
-		if err != nil {
-
-			panic(err.Error())
+		if err != nil && err != http.ErrServerClosed {
+			t.Fatalf("Error starting server: %s\n", err.Error())
 		}
 	}()
 
