@@ -129,7 +129,7 @@ func TestSuite(t *testing.T) {
 	wd = filepath.Join(wd, "testdata")
 
 	go func() {
-		err := http.ListenAndServe(":1234", http.FileServer(http.Dir(filepath.Join(wd, "remotes"))))
+		err := http.ListenAndServe(":4321", http.FileServer(http.Dir(filepath.Join(wd, "remotes"))))
 		if err != nil && err != http.ErrServerClosed {
 			t.Fatalf("Error starting server: %s\n", err.Error())
 		}

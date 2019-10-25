@@ -212,7 +212,7 @@
     {
         "description": "Recursive references between schemas",
         "schema": {
-            "id": "http://localhost:1234/tree",
+            "id": "http://localhost:4321/tree",
             "description": "tree of nodes",
             "type": "object",
             "properties": {
@@ -225,7 +225,7 @@
             "required": ["meta", "nodes"],
             "definitions": {
                 "node": {
-                    "id": "http://localhost:1234/node",
+                    "id": "http://localhost:4321/node",
                     "description": "node",
                     "type": "object",
                     "properties": {
