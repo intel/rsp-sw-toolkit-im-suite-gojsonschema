@@ -1,7 +1,7 @@
 [
     {
         "description": "remote ref",
-        "schema": {"$ref": "http://localhost:4321/integer.json"},
+        "schema": {"$ref": "http://localhost:43210/integer.json"},
         "tests": [
             {
                 "description": "remote ref valid",
@@ -17,7 +17,7 @@
     },
     {
         "description": "fragment within remote ref",
-        "schema": {"$ref": "http://localhost:4321/subSchemas.json#/integer"},
+        "schema": {"$ref": "http://localhost:43210/subSchemas.json#/integer"},
         "tests": [
             {
                 "description": "remote fragment valid",
@@ -34,7 +34,7 @@
     {
         "description": "ref within remote ref",
         "schema": {
-            "$ref": "http://localhost:4321/subSchemas.json#/refToInteger"
+            "$ref": "http://localhost:43210/subSchemas.json#/refToInteger"
         },
         "tests": [
             {
@@ -52,7 +52,7 @@
     {
         "description": "base URI change",
         "schema": {
-            "$id": "http://localhost:4321/",
+            "$id": "http://localhost:43210/",
             "items": {
                 "$id": "folder/",
                 "items": {"$ref": "folderInteger.json"}
@@ -74,7 +74,7 @@
     {
         "description": "base URI change - change folder",
         "schema": {
-            "$id": "http://localhost:4321/scope_change_defs1.json",
+            "$id": "http://localhost:43210/scope_change_defs1.json",
             "type" : "object",
             "properties": {
                 "list": {"$ref": "#/definitions/baz"}
@@ -103,7 +103,7 @@
     {
         "description": "base URI change - change folder in subschema",
         "schema": {
-            "$id": "http://localhost:4321/scope_change_defs2.json",
+            "$id": "http://localhost:43210/scope_change_defs2.json",
             "type" : "object",
             "properties": {
                 "list": {"$ref": "#/definitions/baz/definitions/bar"}
@@ -136,7 +136,7 @@
     {
         "description": "root ref in remote ref",
         "schema": {
-            "$id": "http://localhost:4321/object",
+            "$id": "http://localhost:43210/object",
             "type": "object",
             "properties": {
                 "name": {"$ref": "name.json#/definitions/orNull"}
