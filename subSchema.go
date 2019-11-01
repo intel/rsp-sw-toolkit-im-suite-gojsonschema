@@ -32,7 +32,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.impcloud.net/RSP-Inventory-Suite/gojsonreference"
+	"github.com/intel/rsp-sw-toolkit-im-suite-gojsonschema/reference"
 )
 
 const (
