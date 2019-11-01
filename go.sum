@@ -7,5 +7,9 @@ github.com/stretchr/testify v1.3.0 h1:TivCn/peBQ7UY8ooIcPgZFpTNSz0Q2U6UrFlUfqbe0
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
 github.impcloud.net/RSP-Inventory-Suite/gojsonpointer v0.0.0-20180127040702-4e3ac2762d5f h1:Paw9dd9dqq8are9GUZMwCX9QN/AgA4zdUkxf6hglylM=
 github.impcloud.net/RSP-Inventory-Suite/gojsonpointer v0.0.0-20180127040702-4e3ac2762d5f/go.mod h1:N80GkzOpdvELrGuL8tBK1F9nPfBLd/hLXwf+hvdaWRk=
+github.impcloud.net/RSP-Inventory-Suite/gojsonpointer v0.0.0-20190322222604-47364a9f9e37 h1:9GVBbN6xrOn9qpH9IfkQno2LT74mes1wBl/GkIVtrWU=
+github.impcloud.net/RSP-Inventory-Suite/gojsonpointer v0.0.0-20190322222604-47364a9f9e37/go.mod h1:Ofx7NIBGzUtXk6FYudSRgtzIfuVAvgxMO1t0F+n82mk=
 github.impcloud.net/RSP-Inventory-Suite/gojsonreference v0.0.0-20190322220103-0e7d2639f6b2 h1:6JhOs/XTRvp5bL6tCZHB3gOcP+yUWEIUdL/6gMoyHWs=
 github.impcloud.net/RSP-Inventory-Suite/gojsonreference v0.0.0-20190322220103-0e7d2639f6b2/go.mod h1:Bmuk1oW3m3RMIKJVtdGU9bM0LR7a/YB7NLeKWE0FHMo=
+github.impcloud.net/RSP-Inventory-Suite/gojsonreference v0.0.0-20190322222938-509162a375af h1:wxVxmjcJtdbgePHvp8+vXl41tytLKnbKb+F4E4XnEBs=
+github.impcloud.net/RSP-Inventory-Suite/gojsonreference v0.0.0-20190322222938-509162a375af/go.mod h1:GYOjTIfJUEBvJSFxjl1C8JOnbwLgudOC+qUwPnD+CKw=

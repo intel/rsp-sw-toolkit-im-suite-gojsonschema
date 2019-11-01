@@ -1,5 +1,5 @@
 # gojsonschema
-Fork of https://github.com/xeipuuv/gojsonschema and related libraries.
+Fork of https://github.com/xeipuuv/gojsonschema. 
 
 ## Description
 
