@@ -1,7 +1,5 @@
-[![GoDoc](https://godoc.org/github.com/xeipuuv/gojsonschema?status.svg)](https://godoc.org/github.com/xeipuuv/gojsonschema)
-[![Build Status](https://travis-ci.org/xeipuuv/gojsonschema.svg)](https://travis-ci.org/xeipuuv/gojsonschema)
-
 # gojsonschema
+Fork of https://github.com/xeipuuv/gojsonschema and related libraries.
 
 ## Description
 
