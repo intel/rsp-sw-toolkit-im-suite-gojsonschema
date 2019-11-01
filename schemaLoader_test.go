@@ -29,12 +29,12 @@ import (
 func TestSchemaLoaderWithReferenceToAddedSchema(t *testing.T) {
 	sl := NewSchemaLoader()
 	err := sl.AddSchemas(NewStringLoader(`{
-		"$id" : "http://localhost:43210/test1.json",
+		"$id" : "http://localhost:21210/test1.json",
 		"type" : "integer"
 		}`))
 
 	assert.Nil(t, err)
-	schema, err := sl.Compile(NewReferenceLoader("http://localhost:43210/test1.json"))
+	schema, err := sl.Compile(NewReferenceLoader("http://localhost:21210/test1.json"))
 	assert.Nil(t, err)
 	result, err := schema.Validate(NewStringLoader(`"hello"`))
 	assert.Nil(t, err)
@@ -45,7 +45,7 @@ func TestSchemaLoaderWithReferenceToAddedSchema(t *testing.T) {
 
 func TestCrossReference(t *testing.T) {
 	schema1 := NewStringLoader(`{
-		"$ref" : "http://localhost:43210/test3.json",
+		"$ref" : "http://localhost:21210/test3.json",
 		"definitions" : {
 			"foo" : {
 				"type" : "integer"
@@ -53,15 +53,15 @@ func TestCrossReference(t *testing.T) {
 		}
 	}`)
 	schema2 := NewStringLoader(`{
-		"$ref" : "http://localhost:43210/test2.json#/definitions/foo"
+		"$ref" : "http://localhost:21210/test2.json#/definitions/foo"
 	}`)
 
 	sl := NewSchemaLoader()
-	err := sl.AddSchema("http://localhost:43210/test2.json", schema1)
+	err := sl.AddSchema("http://localhost:21210/test2.json", schema1)
 	assert.Nil(t, err)
-	err = sl.AddSchema("http://localhost:43210/test3.json", schema2)
+	err = sl.AddSchema("http://localhost:21210/test3.json", schema2)
 	assert.Nil(t, err)
-	schema, err := sl.Compile(NewStringLoader(`{"$ref" : "http://localhost:43210/test2.json"}`))
+	schema, err := sl.Compile(NewStringLoader(`{"$ref" : "http://localhost:21210/test2.json"}`))
 	assert.Nil(t, err)
 	result, err := schema.Validate(NewStringLoader(`"hello"`))
 	assert.Nil(t, err)
@@ -73,16 +73,16 @@ func TestCrossReference(t *testing.T) {
 // Multiple schemas identifying under the same $id should throw an error
 func TestDoubleIDReference(t *testing.T) {
 	sl := NewSchemaLoader()
-	err := sl.AddSchema("http://localhost:43210/test4.json", NewStringLoader("{}"))
+	err := sl.AddSchema("http://localhost:21210/test4.json", NewStringLoader("{}"))
 	assert.Nil(t, err)
-	err = sl.AddSchemas(NewStringLoader(`{ "$id" : "http://localhost:43210/test4.json"}`))
+	err = sl.AddSchemas(NewStringLoader(`{ "$id" : "http://localhost:21210/test4.json"}`))
 	assert.NotNil(t, err)
 }
 
 func TestCustomMetaSchema(t *testing.T) {
 
 	loader := NewStringLoader(`{
-		"$id" : "http://localhost:43210/test5.json",
+		"$id" : "http://localhost:21210/test5.json",
 		"properties" : {
 			"multipleOf" : false
 		}
@@ -95,8 +95,8 @@ func TestCustomMetaSchema(t *testing.T) {
 	err := sl.AddSchemas(loader)
 	assert.Nil(t, err)
 	_, err = sl.Compile(NewStringLoader(`{
-		"$id" : "http://localhost:43210/test6.json",
-		"$schema" : "http://localhost:43210/test5.json",
+		"$id" : "http://localhost:21210/test6.json",
+		"$schema" : "http://localhost:21210/test5.json",
 		"type" : "string"
 	}`))
 	assert.Nil(t, err)
@@ -106,8 +106,8 @@ func TestCustomMetaSchema(t *testing.T) {
 	err = sl.AddSchemas(loader)
 	assert.Nil(t, err)
 	_, err = sl.Compile(NewStringLoader(`{
-		"$id" : "http://localhost:43210/test7.json",
-		"$schema" : "http://localhost:43210/test5.json",
+		"$id" : "http://localhost:21210/test7.json",
+		"$schema" : "http://localhost:21210/test5.json",
 		"multipleOf" : 5
 	}`))
 	assert.NotNil(t, err)
@@ -138,14 +138,14 @@ func TestDraftCrossReferencing(t *testing.T) {
 
 	loader1 := NewStringLoader(`{
 		"$schema" : "http://json-schema.org/draft-04/schema#",
-		"id" : "http://localhost:43210/file.json",
-		"$id" : "http://localhost:43210/file.json",
+		"id" : "http://localhost:21210/file.json",
+		"$id" : "http://localhost:21210/file.json",
 		"exclusiveMinimum" : 5
 	}`)
 	loader2 := NewStringLoader(`{
 		"$schema" : "http://json-schema.org/draft-07/schema#",
-		"id" : "http://localhost:43210/main.json",
-		"$id" : "http://localhost:43210/main.json",
+		"id" : "http://localhost:21210/main.json",
+		"$id" : "http://localhost:21210/main.json",
 		"$ref" : "file.json"
 	}`)
 
