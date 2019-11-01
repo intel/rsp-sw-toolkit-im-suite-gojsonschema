@@ -14,12 +14,10 @@ References :
 ## Installation
 
 ```
-go get github.com/xeipuuv/gojsonschema
+go get github.com/intel/rsp-sw-toolkit-im-suite-gojsonschema
 ```
 
-Dependencies :
-* [github.impcloud.net/RSP-Inventory-Suite/gojsonpointer](https://github.impcloud.net/RSP-Inventory-Suite/gojsonpointer)
-* [github.impcloud.net/RSP-Inventory-Suite/gojsonreference](https://github.impcloud.net/RSP-Inventory-Suite/gojsonreference)
+Test Dependencies:
 * [github.com/stretchr/testify/assert](https://github.com/stretchr/testify#assert-package)
 
 ## Usage
